@@ -1,0 +1,46 @@
+table {
+    width: 95%;
+    align-items: center;
+  }
+
+.tabla{
+    //text-align: center;
+    width: 95%;
+    padding-left: 8%;
+    padding-right: 5%;
+}
+
+
+.span {
+  margin: auto;
+  padding-top: 0%;
+}
+.mat-toolbar-row{
+  margin-top: 0%;
+  background-color:rgb(43, 226, 119);
+  color: black;
+}
+
+.add{
+  color: green;
+}
+.agregar{
+  width: 15%;
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.712), 0 6px 20px 0 rgba(0, 0, 0, 0.712);
+}
+
+#inputImage{
+  display: none;
+}
+
+.labelInputFile{
+  width: 4rem;
+  height: 4rem;
+  background-color: chartreuse;
+  border-radius: 90%;
+  padding: 1rem;
+}

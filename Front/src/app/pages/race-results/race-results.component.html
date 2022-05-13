@@ -1,0 +1,142 @@
+
+
+<mat-toolbar color="warn">
+    <mat-toolbar-row>
+        <span class="span" >Resultados</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  
+  
+  <div class="tabla" >
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        
+          <!-- Name Column -->
+          <ng-container matColumnDef="race_name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let element">{{element.race_name}} </td>
+          </ng-container>
+
+          <!--  Column -->
+          <ng-container matColumnDef="results">
+            <th mat-header-cell *matHeaderCellDef>Results</th>
+            <td mat-cell *matCellDef="let element">{{element.results}} </td>
+          </ng-container>
+        
+          <!-- Weight Column -->
+          <ng-container matColumnDef="number_of_laps">
+            <th mat-header-cell *matHeaderCellDef>Number of laps</th>
+            <td mat-cell *matCellDef="let element"> {{element.number_of_laps}} </td>
+          </ng-container>
+        
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef>Date</th>
+            <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="editar">
+            <th mat-header-cell *matHeaderCellDef>Editar</th>
+            <td mat-cell *matCellDef="let element">
+              <ng-template #content let-c="close" let-d="dismiss" (click)="open('autofocus')">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="modal-basic-title">Editar datos de usuarios</h4>
+                  <button type="button" class="btn-close btn-outline-danger" aria-label="Close" (click)="d('Cross click')"></button>
+                </div>
+                <div class="modal-body">
+                  <form [formGroup]= "form" (submit)="sendData(false)" >
+      
+                    <mat-form-field appearance="fill">
+                      <mat-label>Editar Results</mat-label>
+                      <input matInput placeholder={{element.name}} formControlName = "results">
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field appearance="fill">
+                      <mat-label>Editar vueltas</mat-label>
+                      <input matInput placeholder={{element.number_of_laps}} formControlName = "number_of_laps">
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field appearance="fill" >
+                      <mat-label>Editar Race Id</mat-label>
+                      <input matInput  formControlName = "race_id" placeholder={{element.race_id}}>
+                    </mat-form-field>  
+                    <br>
+                    <mat-form-field appearance="fill" >
+                      <mat-label>Editar Race name</mat-label>
+                      <input matInput  formControlName = "race_name" placeholder={{element.race_id}}>
+                    </mat-form-field>  
+                    <br>
+                    <mat-form-field appearance="fill">
+                      <mat-label>Editar fecha</mat-label>
+                      <input matInput placeholder={{element.date}} formControlName = "date">
+                    </mat-form-field>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-success" (click)="sendData(false)">Save</button>
+                  </div>
+                </ng-template>   
+                <button class="btn btn-lg btn-outline-warning" (click)="open(content)">Editar informacion</button>
+
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="eliminar">
+            <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-fab color="warn" aria-label="Example icon button with a delete icon" >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> -->
+          <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+  </div>
+  
+  <div class="agregar">
+    <ng-template #content let-c="close" let-d="dismiss" (click)="open('autofocus')">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Agregar Evento</h4>
+        <button type="button" class="btn-close btn-outline-danger" aria-label="Close" (click)="d('Cross click')"></button>
+      </div>
+      <div class="modal-body">
+        
+        <form [formGroup]= "form" (submit)="sendData(false)" >
+      
+          <mat-form-field appearance="fill">
+            <mat-label>Agregar Results</mat-label>
+            <input matInput  formControlName = "results">
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label>Agregar vueltas</mat-label>
+            <input matInput  formControlName = "number_of_laps">
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill" >
+            <mat-label>Agregar Race Id</mat-label>
+            <input matInput  formControlName = "race_id" >
+          </mat-form-field>  
+          <br>
+          <mat-form-field appearance="fill" >
+            <mat-label>Agregar Race name</mat-label>
+            <input matInput  formControlName = "race_name" >
+          </mat-form-field>  
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label>Agregar fecha</mat-label>
+            <input matInput formControlName = "date">
+          </mat-form-field>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-success" >Save</button>
+        </div>
+      </ng-template>
+      <button mat-icon-button color="primary" aria-label="Example icon button with a home icon" class="add" (click)="open(content)">
+        <mat-icon>add</mat-icon>
+      </button>
+  </div>

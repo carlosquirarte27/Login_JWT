@@ -1,0 +1,94 @@
+table {
+    width: 100%;
+    align-items: center;
+  }
+
+.tabla{
+    //text-align: center;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+
+
+.add{
+  color: green;
+}
+.agregar{
+  width: 15%;
+  margin-top: 3%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.712), 0 6px 20px 0 rgba(0, 0, 0, 0.712);
+}
+
+.carousel {
+  align-items: center;
+}
+
+.carousel-caption {
+  background-color: rgba(44, 43, 43, 0.596);
+  text-decoration: wavy;
+  font-style: italic;
+  font-size: x-large;
+  margin-bottom: 100px;
+  margin-top: 100px;
+  padding-top: 200px;
+  text-align: center;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+
+}
+
+.center-car{
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.ngb-carousel {
+   margin-left: auto;
+   margin-right: auto;
+  width: 100%;
+  padding: 10px;
+}
+.baner{
+  font-size: xx-large;
+  padding-bottom: auto;
+  color: rgb(219, 174, 23);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-decoration: underline;
+  padding-bottom: 15%;
+
+}
+
+.span {
+  margin: auto;
+  padding-top: 0%;
+}
+.head2{
+  margin-top: 0%;
+  background-color:rgba(238, 184, 34, 0.719);
+  color: black;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: xx-large;
+}
+
+.span {
+  margin: auto;
+  padding-top: 0%;
+}
+.head1{
+  margin-top: 0%;
+  background-color:rgba(109, 238, 34, 0.719);
+  color: black;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: xx-large;
+}

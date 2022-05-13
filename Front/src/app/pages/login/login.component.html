@@ -1,0 +1,40 @@
+
+<div class="formulario">
+  <img src="../../../assets/images/home_kart_gif.gif" >
+
+
+        <form (submit)="login()">
+        <div> 
+            <!-- <label  for="username">Username: </label>
+            <input type="text" [(ngModel)]="Username" name="username" placeholder="Username"> -->
+            <p>
+                <mat-form-field appearance="fill">
+                  <mat-label>Ingresa tu email</mat-label>
+                  <input matInput placeholder="Username" type="text" [(ngModel)]="email" name="email" >
+                  <mat-icon matSuffix>verified_user</mat-icon>
+                </mat-form-field>
+              </p>
+        </div>
+        <div> 
+            <!-- <label for="password">Password: </label>
+            <input type="text" [(ngModel)]="password" name="password" placeholder="Password"> -->
+            <p>
+                <mat-form-field appearance="fill">
+                  <mat-label>Ingresa tu contraseña</mat-label>
+                  <input matInput placeholder="Password" type="text" [(ngModel)]="password" name="password" >
+                  <mat-icon matSuffix>security</mat-icon>
+                </mat-form-field>
+              </p>
+        </div>
+        <div >
+            <button  mat-raised-button color="accent">Login</button>
+            <br>
+            <br>
+            <button  mat-raised-button color="accent" class="google" (click)="googleLogIn()" type="button">Google</button>
+
+        </div>
+        <div class="no-account">
+            Don't have an account? <a routerLink="/singup">Sing up here</a>
+        </div>
+    </form>
+</div>

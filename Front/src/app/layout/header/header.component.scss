@@ -1,0 +1,43 @@
+.mat-toolbar {
+    //background-color: green;
+    //color: white;
+    text-align: center;
+    margin-bottom: 0%;
+    padding-bottom: 0%;
+
+}
+
+// .botones{
+//     color: white;
+// }
+
+.navbar {
+    background-color: rgba(0, 0, 0, .85);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+    height: 70px;
+    text-align: center;
+  }
+  .nav {
+    color: #696969;
+    transition: color .15s ease-in-out;
+  }
+  .nav a:hover {
+    color: white;
+    text-decoration:wavy;
+    font-size: large;
+  }
+  button{
+    
+      color: rgb(0, 0, 0);
+      text-decoration:wavy;
+      font-size: large
+    
+  }
+  span{
+    color: rgb(0, 0, 0);
+    text-decoration:wavy;
+    font-size: large;
+
+  }
+

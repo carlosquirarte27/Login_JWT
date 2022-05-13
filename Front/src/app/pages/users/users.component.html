@@ -1,0 +1,174 @@
+<mat-toolbar color="warn">
+  <mat-toolbar-row>
+    <span class="span">Users</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+
+
+
+<div class="tabla">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    
+
+    <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <!-- <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+          </ng-container> -->
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Event</th>
+      <td mat-cell *matCellDef="let element">{{element.username}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> date </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="number">
+      <th mat-header-cell *matHeaderCellDef> Pista </th>
+      <td mat-cell *matCellDef="let element"> {{element.number}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="editar">
+      <th mat-header-cell *matHeaderCellDef> Editar </th>
+      <td mat-cell *matCellDef="let element">
+
+        <ng-template #content let-c="close" let-d="dismiss" (click)="open('autofocus')">
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Editar datos de usuarios</h4>
+            <button type="button" class="btn-close btn-outline-danger" aria-label="Close" (click)="d('Cross click')"></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]= "form" (submit)="sendData(element._id)" >
+
+              <mat-form-field appearance="fill">
+                <mat-label>Editar nombre</mat-label>
+                <input matInput placeholder={{element.username}} formControlName = "username">
+              </mat-form-field>
+              <br>
+              <mat-form-field appearance="fill">
+                <mat-label>Editar correo</mat-label>
+                <input matInput placeholder={{element.email}} formControlName = "email">
+              </mat-form-field>
+              <br>
+              <mat-form-field appearance="fill">
+                <mat-label>Editar password</mat-label>
+                <input matInput placeholder={{element.password}} formControlName = "password">
+              </mat-form-field>
+              <br>
+              <mat-form-field appearance="fill" >
+                <mat-label>Number</mat-label>
+                <input matInput  formControlName = "number" placeholder={{element.number}}>
+              </mat-form-field>  
+              <br>
+              <mat-form-field appearance="fill">
+                <mat-label>Editar foto de perfil</mat-label>
+                <input matInput placeholder={{element.picture}} formControlName = "imagen">
+              </mat-form-field>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-success" (click)="sendData(element._id)">Save</button>
+            </div>
+          </ng-template>   
+          <button class="btn btn-lg btn-outline-warning" (click)="open(content)">Editar informacion</button>    
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="eliminar">
+      <th mat-header-cell *matHeaderCellDef> Eliminar </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-fab color="warn" aria-label="Example icon button with a delete icon" (click)="delete(element.email)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    
+
+    <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
+
+
+    <div class="agregar">
+      <ng-template #content let-c="close" let-d="dismiss" (click)="open('autofocus')">
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Agregar usuario</h4>
+          <button type="button" class="btn-close btn-outline-danger" aria-label="Close" (click)="d('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]= "form" (submit)="sendData('')" >
+  
+            <mat-form-field appearance="fill">
+              <mat-label>Nombre</mat-label>
+              <input matInput formControlName = "username">
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+              <mat-label>Correo</mat-label>
+              <input matInput  formControlName = "email">
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+              <mat-label>Password</mat-label>
+              <input matInput  formControlName = "password">
+            </mat-form-field>
+            <br>
+             <mat-form-field appearance="fill" >
+              <mat-label>Number</mat-label>
+              <input matInput formControlName = "number">
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+              <mat-label>Foto de perfil</mat-label>
+              <input matInput  formControlName = "imagen">
+            </mat-form-field>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-success" (click)="sendData('')">Save</button>
+          </div>
+        </ng-template>
+        <button mat-icon-button color="primary" aria-label="Example icon button with a home icon" class="add" (click)="open(content)">
+          <mat-icon>add</mat-icon>
+        </button>
+    </div>
+
+    
+    <input type="file" accept=".png ,.jpg,.jpegm.bmp,.gif" (change)="cargarImagen($event)" id="inputImage">
+    <label for="inputImage" class="labelInputFile">Subir imagenes</label>
+    <img src=""  alt="">
+
+    <!-- <div class="example-flex-container">
+      <div class="example-button-container">
+        <button mat-fab color="primary" aria-label="Example icon button with a delete icon" >
+          <mat-icon matInput type="file">  add_photo_alternate</mat-icon>
+        </button>
+      </div>
+       -->
+
+
+
+
+
+
+  
+
+
+
+

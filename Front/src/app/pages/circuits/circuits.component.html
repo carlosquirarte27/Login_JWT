@@ -1,0 +1,194 @@
+<!-- <mat-toolbar color="warn">
+    <mat-toolbar-row>
+        <span class="span" >Circuits</span>
+    </mat-toolbar-row>
+  </mat-toolbar> -->
+
+
+
+
+   <!-- <mat-grid-list cols="2" rowHeight="2:1">
+    <mat-grid-tile>
+            <mat-card class="example-card">
+              <img mat-card-image src="https://www.elviajerofisgon.com/wp-content/uploads/2016/11/2-15.jpg"
+                alt="Photo of a Shiba Inu">     
+            </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <mat-card-content class="text">
+            <h2 class="title">Circuito 1a</h2>
+            <p>
+                Lo mejor de los circuitos más famosos del mundo: chicanes, curvas rápidas, 
+                lentas y técnicas; peralte de Indianápolis; descenso de Spa-Francorchamps; 
+                recta de meta; túnel de Mónaco y zona de repostaje para carreras de resistencias.       
+            </p>
+            <a href = "mailto:abc@example.com?subject = Feedback&body = Message">
+                Quiero reservar 
+            </a>
+          </mat-card-content>
+    </mat-grid-tile>
+    <mat-grid-tile>3</mat-grid-tile>
+    <mat-grid-tile>4</mat-grid-tile>
+    <mat-grid-tile>5</mat-grid-tile>
+    <mat-grid-tile>6</mat-grid-tile>
+    <mat-grid-tile>7</mat-grid-tile>
+    <mat-grid-tile>8</mat-grid-tile>
+  </mat-grid-list>  -->
+
+
+  
+  <div class="center-car">
+    <ngb-carousel >
+      <ng-template *ngFor="let circuit of dataSource"  ngbSlide>
+        <div class="picsum-img-wrapper">
+          <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/11/d5/d4/e4/kartodromo-de-baltar.jpg?w=1200&h=-1&s=1" height="100%" width="100%" style="text-align: center;" alt="Random first slide">
+        </div>
+        <div class="carousel-caption">
+          <h1 >{{circuit.name}}</h1>
+          <p>{{circuit.description}}</p>
+          <p>{{circuit.circuit_distance}}</p>
+          <p>{{circuit.address}}</p>
+          <p><a class="btn btn-lg btn btn-outline-warning" routerLink="/races">Conoce los próximos eventos!</a></p>
+        </div>
+      </ng-template>
+    </ngb-carousel>
+  </div>
+
+ 
+  <div class="agregar">
+    <ng-template #content let-c="close" let-d="dismiss" (click)="open('autofocus')">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Agregar usuario</h4>
+        <button type="button" class="btn-close btn-outline-danger" aria-label="Close" (click)="d('Cross click')"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]= "form" >
+  
+          <mat-form-field appearance="fill">
+            <mat-label>Agregar nombre</mat-label>
+            <input matInput formControlName = "name">
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label>Agregar distancia</mat-label>
+            <input matInput  formControlName = "circuit_distance">
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label>Agregar direccion</mat-label>
+            <input matInput  formControlName = "address">
+          </mat-form-field>
+          <br>
+           <mat-form-field appearance="fill" >
+            <mat-label>Agregar telefono</mat-label>
+            <input matInput formControlName = "phone_number">
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label>Agregar descripcion</mat-label>
+            <input matInput  formControlName = "description">
+          </mat-form-field>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-success" (click)="sendData('')">Save</button>
+        </div>
+      </ng-template>
+      <button mat-icon-button color="primary" aria-label="Example icon button with a home icon" class="add" (click)="open(content)">
+        <mat-icon>add</mat-icon>
+      </button>
+  </div>
+
+
+  <div class="tabla" >
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8"> 
+        
+         <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="address">
+          <th mat-header-cell *matHeaderCellDef>address</th>
+          <td mat-cell *matCellDef="let element"> {{element.address}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="phone_number">
+          <th mat-header-cell *matHeaderCellDef>phone_number</th>
+          <td mat-cell *matCellDef="let element"> {{element.phone_number}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="circuit_distance">
+          <th mat-header-cell *matHeaderCellDef>Circuit distance</th>
+          <td mat-cell *matCellDef="let element"> {{element.circuit_distance}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="editar">
+          <th mat-header-cell *matHeaderCellDef>Editar</th>
+          <td mat-cell *matCellDef="let element">
+
+            <ng-template #content let-c="close" let-d="dismiss" (click)="open('autofocus')">
+              <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Editar datos de usuarios</h4>
+                <button type="button" class="btn-close btn-outline-danger" aria-label="Close" (click)="d('Cross click')"></button>
+              </div>
+              <div class="modal-body">
+                <form [formGroup]= "form" >
+  
+                  <mat-form-field appearance="fill">
+                    <mat-label>Agregar nombre</mat-label>
+                    <input matInput formControlName = "name">
+                  </mat-form-field>
+                  <br>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Agregar distancia</mat-label>
+                    <input matInput  formControlName = "circuit_distance">
+                  </mat-form-field>
+                  <br>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Agregar direccion</mat-label>
+                    <input matInput  formControlName = "address">
+                  </mat-form-field>
+                  <br>
+                   <mat-form-field appearance="fill" >
+                    <mat-label>Agregar telefono</mat-label>
+                    <input matInput formControlName = "phone_number">
+                  </mat-form-field>
+                  <br>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Agregar descripcion</mat-label>
+                    <input matInput  formControlName = "description">
+                  </mat-form-field>
+                  </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-success" (click)="sendData(element._id)">Save</button>
+              </div>
+            </ng-template>
+            <button class="btn btn-lg btn-outline-warning" (click)="open(content)">Editar informacion</button>
+
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="eliminar">
+          <th mat-header-cell *matHeaderCellDef>eliminar</th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-fab color="warn"  aria-label="Example icon button with a delete icon" (click)="delete(element._id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>        
+
+        
+
+        <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>  -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table> 
+      
+</div>
+
+
+
+

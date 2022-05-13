@@ -1,0 +1,353 @@
+
+
+<!-- <mat-toolbar color="warn" class="header">
+  <mat-toolbar-row>
+      <span class="span" >Carreras Abiertas</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+
+<mat-toolbar color="warn">
+  <mat-toolbar-row>
+      <span class="span" >Carreras Cerradas</span>
+  </mat-toolbar-row>
+</mat-toolbar> -->
+
+<mat-toolbar color="warn" class="head1">
+  <mat-toolbar-row>
+      <span class="span" >Proximos eventos </span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div>
+  <div class="center-car">
+    <ngb-carousel >
+      <ng-template *ngFor="let race of dataSource"  ngbSlide>
+        <div class="picsum-img-wrapper">
+          <img src="https://firebasestorage.googleapis.com/v0/b/karts-racing.appspot.com/o/users%2F%5Bobject%20Object%5D_1652397914291?alt=media&token=cb3cf434-c83f-455e-9e70-e7144df1867f" height="100%" width="100%" style="text-align: center;" alt="Random first slide">
+        </div>
+        <div class="carousel-caption">
+          <h1 class="baner">Proximos eventos!</h1>
+          <h1 >{{race.name}}</h1>
+          <p>{{race.date}}</p>
+          <p>{{race.circuit}}</p>
+          <p>Cupos disponibles: {{race.disponibilidad}}</p>
+          <p><a class="btn btn-lg btn btn-outline-warning" (click)="joinRace(race._id)">Unete a a la carrera!</a></p>
+        </div>
+      </ng-template>
+    </ngb-carousel>
+  </div>
+</div>
+
+<mat-toolbar color="warn" class="head2">
+  <mat-toolbar-row>
+      <span class="span" >Tus proximos eventos </span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+
+<div class="center-car">
+  <ngb-carousel >
+    <ng-template *ngFor="let raceIn of user_events"  ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img src="https://firebasestorage.googleapis.com/v0/b/karts-racing.appspot.com/o/users%2F%5Bobject%20Object%5D_1652398278368?alt=media&token=a6887ce2-26c9-4795-ac24-f9b0ff6a61be" height="100%" width="100%" style="text-align: center;" alt="Random first slide">
+      </div>
+      <div class="carousel-caption">
+        <h1 class="baner"></h1>
+        <h1 >{{raceIn.name}}</h1>
+        <p>{{raceIn.date}}</p>
+        <p>{{raceIn.circuit}}</p>
+        <p>Cupos disponibles: {{raceIn.disponibilidad}}</p>
+        <p><a class="btn btn-lg btn btn-outline-warning" (click)="leftRace(raceIn._id)">Salir de la carrera</a></p>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+</div>
+
+
+  <div class="center-car">
+    <ngb-carousel >
+      <ng-template *ngFor="let raceIn of closed_events"  ngbSlide>
+        <div class="picsum-img-wrapper">
+          <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/11/d5/d4/e4/kartodromo-de-baltar.jpg?w=1200&h=-1&s=1" height="100%" width="100%" style="text-align: center;" alt="Random first slide">
+        </div>
+        <div class="carousel-caption">
+          <h1 class="baner">Eventos cerrados!</h1>
+          <h1 >{{raceIn.name}}</h1>
+          <p>{{raceIn.date}}</p>
+          <p>{{raceIn.circuit}}</p>
+          <p>Cupos disponibles: {{raceIn.disponibilidad}}</p>
+          <p><a class="btn btn-lg btn btn-outline-warning" routerLink="/races-results/{{raceIn._id}}">Ver resultados</a></p>
+        </div>
+      </ng-template>
+    </ngb-carousel>
+  </div>
+
+
+
+<ngb-accordion #acc="ngbAccordion">
+  <ngb-panel id="toggle-1" title="Carreras Abiertas">
+    <ng-template ngbPanelContent>
+      <div class="tabla" >
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <!-- Name Column -->
+            <ng-container matColumnDef="event">
+              <th mat-header-cell *matHeaderCellDef>  Event</th>
+              <td mat-cell *matCellDef="let element"> <a routerLink="/races-results/{{element._id}}">{{element.name}}</a> </td>
+            </ng-container>
+          
+            <!-- Weight Column -->
+            <ng-container matColumnDef="date">
+              <th mat-header-cell *matHeaderCellDef> date </th>
+              <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+            </ng-container>
+          
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="pista">
+              <th mat-header-cell *matHeaderCellDef> Pista </th>
+              <td mat-cell *matCellDef="let element"> {{element.circuit}} </td>
+            </ng-container>
+      
+            <ng-container matColumnDef="laps">
+              <th mat-header-cell *matHeaderCellDef>  Laps</th>
+              <td mat-cell *matCellDef="let element"> {{element.number_of_laps}} </td>
+            </ng-container>
+      
+            <ng-container matColumnDef="drivers">
+              <th mat-header-cell *matHeaderCellDef>  Drivers</th>
+              <td mat-cell *matCellDef="let element"> {{element.drivers}} </td>
+            </ng-container>
+      
+            <ng-container matColumnDef="capacity">
+              <th mat-header-cell *matHeaderCellDef>Capacity</th>
+              <td mat-cell *matCellDef="let element"> {{element.capacity}} </td>
+            </ng-container>
+      
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef>Status</th>
+              <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="editar">
+              <th mat-header-cell *matHeaderCellDef>Status</th>
+              <td mat-cell *matCellDef="let element">
+                <ng-template #content let-c="close" let-d="dismiss" (click)="open('autofocus')">
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">Editar datos de usuarios</h4>
+                    <button type="button" class="btn-close btn-outline-danger" aria-label="Close" (click)="d('Cross click')"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form [formGroup]= "form" (submit)="sendData(element._id)" >
+        
+                      <mat-form-field appearance="fill">
+                        <mat-label>Editar nombre</mat-label>
+                        <input matInput placeholder={{element.name}} formControlName = "name">
+                      </mat-form-field>
+                      <br>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Editar vueltas</mat-label>
+                        <input matInput placeholder={{element.number_of_laps}} formControlName = "number_of_laps">
+                      </mat-form-field>
+                      <br>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Editar fecha</mat-label>
+                        <input matInput placeholder={{element.date}} formControlName = "date">
+                      </mat-form-field>
+                      <br>
+                      <mat-form-field appearance="fill" >
+                        <mat-label>Editar circuito</mat-label>
+                        <input matInput  formControlName = "circuit" placeholder={{element.circuit}}>
+                      </mat-form-field>  
+                      <br>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Editar capacidad</mat-label>
+                        <input matInput placeholder={{element.capacity}} formControlName = "capacity">
+                      </mat-form-field>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-outline-success" (click)="sendData(element._id)">Save</button>
+                    </div>
+                  </ng-template>   
+                  <button class="btn btn-lg btn-outline-warning" (click)="open(content)">Editar informacion</button>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="eliminar">
+              <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+              <td mat-cell *matCellDef="let element"> 
+                <button mat-fab color="warn" aria-label="Example icon button with a delete icon" (click)="delete(element._id)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+            
+            
+      
+            <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> -->
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+      </div>
+      
+      
+    </ng-template>
+  </ngb-panel>
+  <ngb-panel id="toggle-2" title="Carreas cerradas">
+    <ng-template ngbPanelContent>
+      <div class="tabla" >
+        <table mat-table [dataSource]="closed_events" class="mat-elevation-z8">
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="event">
+              <th mat-header-cell *matHeaderCellDef>  Event</th>
+              <td mat-cell *matCellDef="let element"> <a routerLink="/races-results/{{element._id}}">{{element.name}}</a> </td>
+            </ng-container>
+          
+            <!-- Weight Column -->
+            <ng-container matColumnDef="date">
+              <th mat-header-cell *matHeaderCellDef> date </th>
+              <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+            </ng-container>
+          
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="pista">
+              <th mat-header-cell *matHeaderCellDef> Pista </th>
+              <td mat-cell *matCellDef="let element"> {{element.circuit}} </td>
+            </ng-container>
+      
+            <ng-container matColumnDef="laps">
+              <th mat-header-cell *matHeaderCellDef>  Laps</th>
+              <td mat-cell *matCellDef="let element"> {{element.number_of_laps}} </td>
+            </ng-container>
+      
+            <ng-container matColumnDef="drivers">
+              <th mat-header-cell *matHeaderCellDef>  Drivers</th>
+              <td mat-cell *matCellDef="let element"> {{element.drivers}} </td>
+            </ng-container>
+      
+            <ng-container matColumnDef="capacity">
+              <th mat-header-cell *matHeaderCellDef>Capacity</th>
+              <td mat-cell *matCellDef="let element"> {{element.capacity}} </td>
+            </ng-container>
+      
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef>Status</th>
+              <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="editar">
+              <th mat-header-cell *matHeaderCellDef>Editar</th>
+              <td mat-cell *matCellDef="let element">  
+                <ng-template #content let-c="close" let-d="dismiss" (click)="open('autofocus')">
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">Editar datos de carreras</h4>
+                    <button type="button" class="btn-close btn-outline-danger" aria-label="Close" (click)="d('Cross click')"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form [formGroup]= "form" (submit)="sendData(element._id)" >
+        
+                      <mat-form-field appearance="fill">
+                        <mat-label>Editar nombre</mat-label>
+                        <input matInput placeholder={{element.name}} formControlName = "name">
+                      </mat-form-field>
+                      <br>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Editar vueltas</mat-label>
+                        <input matInput placeholder={{element.number_of_laps}} formControlName = "number_of_laps">
+                      </mat-form-field>
+                      <br>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Editar fecha</mat-label>
+                        <input matInput placeholder={{element.date}} formControlName = "date">
+                      </mat-form-field>
+                      <br>
+                      <mat-form-field appearance="fill" >
+                        <mat-label>Editar circuito</mat-label>
+                        <input matInput  formControlName = "circuit" placeholder={{element.circuit}}>
+                      </mat-form-field>  
+                      <br>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Editar capacidad</mat-label>
+                        <input matInput placeholder={{element.capacity}} formControlName = "capacity">
+                      </mat-form-field>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-outline-success" (click)="sendData(element._id)">Save</button>
+                    </div>
+                  </ng-template>   
+                  <button class="btn btn-lg btn-outline-warning" (click)="open(content)">Editar informacion</button>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="eliminar">
+              <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+              <td mat-cell *matCellDef="let element"> 
+                <button mat-fab color="warn" aria-label="Example icon button with a delete icon" (click)="delete(element._id)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+
+
+      
+            
+            <tr mat-header-row *matHeaderRowDef="displayed; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayed;"></tr>
+          </table>
+      </div>
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion>
+
+<div class="agregar">
+  <ng-template #content let-c="close" let-d="dismiss" (click)="open('autofocus')">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Agregar Evento</h4>
+      <button type="button" class="btn-close btn-outline-danger" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      
+      <form [formGroup]= "form" (submit)="sendData('')" >
+        
+        <mat-form-field appearance="fill">
+          <mat-label>Agregar nombre</mat-label>
+          <input matInput formControlName = "name">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-label>Agregar vueltas</mat-label>
+          <input matInput  formControlName = "number_of_laps">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-label>Agregar fecha</mat-label>
+          <input matInput formControlName = "date">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill" >
+          <mat-label>Agregar circuito</mat-label>
+          <input matInput  formControlName = "circuit">
+        </mat-form-field>  
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-label>Agregar capacidad</mat-label>
+          <input matInput  formControlName = "capacity">
+        </mat-form-field>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-success" (click)="sendData('')">Save</button>
+      </div>
+    </ng-template>
+    <button mat-icon-button color="primary" aria-label="Example icon button with a home icon" class="add" (click)="open(content)">
+      <mat-icon>add</mat-icon>
+    </button>
+</div>
+
+
+
+
+  

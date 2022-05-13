@@ -1,0 +1,71 @@
+.span {
+    margin: auto;
+    padding-top: 0%;
+  }
+  .mat-toolbar-row{
+    margin-top: 0%;
+    background-color:rgb(40, 175, 96);
+    color: black;
+  }
+
+  .example-card {
+    max-width: 400px;
+    margin-top: 10 px;
+  }
+  
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+
+  .column {
+    float: right;
+    width: 45%;
+    margin-left: 20px;
+  }
+
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+  }
+  h1{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size:xx-large;
+    font-style: oblique;
+    color: rgb(73, 197, 73);
+    margin: 5px;
+  }
+  p{
+    color: rgb(255, 255, 255);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-decoration: wavy;
+    font-style: italic;
+    font-size: x-large;
+    line-height: normal;
+    padding: 5px;
+    margin: 5px;
+  }
+
+  div.polaroid {
+    background-color: rgb(44, 43, 43);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.658), 0 6px 20px 0 rgba(0, 0, 0, 0.712);
+    margin-bottom: 25px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+  }
+  
+  div.container {
+    text-align: center;
+    padding: 10px 20px;
+  }
+
+.carousel-caption{
+  margin: 20px;
+  margin-left: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+}

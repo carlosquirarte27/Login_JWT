@@ -1,0 +1,91 @@
+mat-grid-tile {
+  background: rgb(219, 133, 133);
+}
+
+.text {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  padding: 8px;
+  font-size: x-large;
+  line-height: 1cm;
+}
+
+.title {
+  font-size: xx-large;
+  text-align: center;
+}
+
+.mat-toolbar-row {
+  margin-top: 0%;
+  background-color: rgb(43, 226, 119);
+  color: black;
+}
+
+.span {
+  margin: auto;
+  padding-top: 0%;
+}
+
+table {
+  width: 80%;
+  align-items: center;
+}
+
+.tabla {
+  //align-self: auto;
+  margin-top: 3%;
+  padding-left: 20%;
+  padding-right: 5%;
+}
+
+
+.span {
+  margin: auto;
+  padding-top: 0%;
+}
+
+.mat-toolbar-row {
+  margin-top: 0%;
+  background-color: rgb(43, 226, 119);
+  color: black;
+}
+
+.carousel {
+  align-items: center;
+}
+
+.carousel-caption {
+  background-color: rgba(44, 43, 43, 0.596);
+  text-decoration: wavy;
+  font-style: italic;
+  font-size: x-large;
+  margin-bottom: 100px;
+  text-align: center;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+
+}
+
+.center-car{
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.ngb-carousel {
+   margin-left: auto;
+   margin-right: auto;
+  width: 95%;
+  padding: 10px;
+}
+
+
+.add{
+  color: green;
+}
+.agregar{
+  width: 15%;
+  margin-top: 3%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.712), 0 6px 20px 0 rgba(0, 0, 0, 0.712);
+}
+//////////////////@at-root

@@ -1,0 +1,38 @@
+ <div class="formulario">
+    <form [formGroup]= "form" (submit)="sendData()" >
+        <div>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Username</mat-label>
+                <input type="text" name="username"  matInput placeholder="Ex. ElJoshep" formControlName = "username" >
+              </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Email</mat-label>
+                <input type="text" name="email" matInput placeholder="Ex. jesus@mail.com" formControlName="email">
+             </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Password</mat-label>
+                <input [type]="showPassword ? 'text' : 'password'" name="password" matInput placeholder="Ex. pass123" formControlName="password">
+                <mat-icon  matSuffix (click)="toggleShowPassword()">{{showPassword ? 'visivility_off' :'visibility'}}</mat-icon>
+             </mat-form-field>
+             <!-- <mat-icon  matSuffix (click)="toggleShowPassword()">{{showPassword ? 'visivility_off' :'visibility'}}</mat-icon> -->
+        </div>
+        <div>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Confirm Password</mat-label>
+                <input type="password" name="confirm_password" matInput placeholder="Confirm password" formControlName="confirm_password" >
+             </mat-form-field>
+        </div>
+        <div class="">
+            <button  mat-raised-button color="accent" [disabled]="form.invalid">Sing up</button>
+        </div>
+        <span *ngIf="form.errors && form.errors['passwordMismatch']" >Passwords don't mathc</span>
+        <div class="account">
+            Have an account <a routerLink="/login">Log in here</a>
+        </div>
+    </form>
+    
+</div> 
